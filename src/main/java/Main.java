@@ -29,13 +29,13 @@ public class Main {
                     studentSection();
                     break;
                 case "2":
-                    //teacherSection();
+                    teacherSection();
                     break;
                 case "3":
-                    //courseSection();
+                    courseSection();
                     break;
                 case "4":
-                    //examResults();
+                    examResults();
                     break;
             }
         } while (!userChoice.equalsIgnoreCase("QUIT"));
@@ -46,7 +46,7 @@ public class Main {
         do {
             System.out.println("Welcome to Student section Please choose what you want to do:" +
                     "\n 1. Add student" +
-                    "\n 2. See student" +
+                    "\n 2. See all students" +
                     "\n 3. Edit student" +
                     "\n 4. Delete student." +
                     "Enter QUIT to return" +
@@ -55,39 +55,104 @@ public class Main {
 
             switch (userInput) {
                 case "1":
-                    createStudent();
+                    school.createStudent();
                     break;
                 case "2":
-                    seeStudent();
+                    school.seeStudent();
                     break;
                 case "3":
-                    //editStudent();
+                    school.editStudent();
                     break;
                 case "4":
-                    //deleteStudent();
+                    school.deleteStudent();
                     break;
             }
         } while (!userInput.equalsIgnoreCase("QUIT"));
 
     }
+    public void teacherSection() {
+        String userInput;
+        do {
+            System.out.println("Welcome to Teacher section. Please choose what you want to do:" +
+                    "\n 1. Add a teacher" +
+                    "\n 2. See all teachers" +
+                    "\n 3. Edit teacher" +
+                    "\n 4. Delete teacher." +
+                    "Enter QUIT to return" +
+                    "\n PLEASE ENTER A NUMBER:");
+            userInput = scanner.nextLine().toUpperCase();
 
-    void createStudent(){
-        System.out.println("Creating a student.. Please enter the name:");
-        String name = scanner.nextLine();
-        System.out.println("Please enter ID:");
-        int id = scannerInt.nextInt();
-        Student student = new Student(id, name);
-        school.addStudent(student);
-        System.out.println("Student " + student.getName() + " has been added" + "\n");
-
+            switch (userInput) {
+                case "1":
+                    school.createTeacher();
+                    break;
+                case "2":
+                    school.seeTeacher();
+                    break;
+                case "3":
+                    school.editTeacher();
+                    break;
+                case "4":
+                    school.deleteTeacher();
+                    break;
+            }
+        } while (!userInput.equalsIgnoreCase("QUIT"));
     }
 
-    void seeStudent(){
-        System.out.println("List of students: ");
-        for (Student student: school.getStudents()){
-            System.out.println(student);
-        }
-        System.out.println("\n");
-    }
+    public void courseSection() {
+        String userInput;
+        do {
+            System.out.println("Welcome to the Course section. Please choose what you want to do:" +
+                    "\n 1. Add a course" +
+                    "\n 2. See all courses" +
+                    "\n 3. Edit a course" +
+                    "\n 4. Delete course." +
+                    "Enter QUIT to return" +
+                    "\n PLEASE ENTER A NUMBER:");
+            userInput = scanner.nextLine().toUpperCase();
 
+            switch (userInput) {
+                case "1":
+                    school.createCourse();
+                    break;
+                case "2":
+                    school.seeCourse();
+                    break;
+                case "3":
+                    school.editCourse();
+                    break;
+                case "4":
+                    school.deleteCourse();
+                    break;
+            }
+        } while (!userInput.equalsIgnoreCase("QUIT"));
+
+    }
+    public void examResults() {
+        String userInput;
+        do {
+            System.out.println("EXAM RESULTS. Please choose what you want to do:" +
+                    "\n 1. Add exam" +
+                    "\n 2. Add a student and result to an exam" +
+                    "\n 3. See all exam results" +
+                    "\n" +
+                    "Enter QUIT to return" +
+                    "\n PLEASE ENTER A NUMBER:");
+            userInput = scanner.nextLine().toUpperCase();
+
+            switch (userInput) {
+                case "1":
+                    school.createExam();
+                    break;
+                case "2":
+                    school.addStudentToExam();
+                    break;
+                case "3":
+                    school.seeExams();
+                    break;
+
+            }
+        } while (!userInput.equalsIgnoreCase("QUIT"));
+
+    }
 }
